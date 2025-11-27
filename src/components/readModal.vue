@@ -39,7 +39,7 @@ function showEmployee(employee) {
     viewModal = new Modal(viewModalRoot.value)
     viewModalRoot.value.addEventListener('hidden.bs.modal', () => {
       viewEmployee.value = null
-      router.push({ query: {} })
+      router.push({ name: 'home' })
     })
   }
   viewModal?.show()

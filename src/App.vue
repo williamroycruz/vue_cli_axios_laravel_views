@@ -108,7 +108,7 @@ const addEmployee = async () => {
 
 const deleteEmployee = async (id) => {
   if (!confirm('Delete this employee?')) return
-  router.push({ query: {} })
+  router.push({ name: 'home' })
   try {
     await axios.post('/api/employees/delete', { id })
     toast.add({
@@ -124,7 +124,7 @@ const deleteEmployee = async (id) => {
 }
 
 const viewEmployee = async (id) => {
-  router.push({ query: { view: id } })
+  router.push({ name: 'employee-view', params: { id } })
   try {
     const { data } = await axios.get('/api/employees/fetch', {
       params: { id },
@@ -136,12 +136,12 @@ const viewEmployee = async (id) => {
     }
   } catch (err) {
     console.error(err)
-    router.push({ query: {} })
+    router.push({ name: 'home' })
   }
 }
 
 const openEditModal = async (id) => {
-  router.push({ query: { update: id } })
+  router.push({ name: 'employee-edit', params: { id } })
   try {
     const { data } = await axios.get('/api/employees/fetch', {
       params: { id },
@@ -166,7 +166,7 @@ const openEditModal = async (id) => {
     }
   } catch (err) {
     console.error(err)
-    router.push({ query: {} })
+    router.push({ name: 'home' })
   }
 }
 
@@ -231,7 +231,7 @@ const resetEditForm = () => {
     mobile_number: '',
   })
   noMiddleEdit.value = false
-  router.push({ query: {} })
+  router.push({ name: 'home' })
 }
 
 const nextPage = () => {
