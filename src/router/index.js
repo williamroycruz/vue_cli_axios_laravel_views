@@ -44,15 +44,15 @@ const router = createRouter({
 })
 
 // Set page title based on route
-// router.beforeEach((to, from, next) => {
-//   if (to.query.view) {
-//     document.title = `View Employee #${to.query.view} - Employee CRUD`
-//   } else if (to.query.update) {
-//     document.title = `Edit Employee #${to.query.update} - Employee CRUD`
-//   } else {
-//     document.title = 'Employee Management - CRUD'
-//   }
-//   next()
-// })
+router.beforeEach((to, from, next) => {
+  if (to.query.view) {
+    document.title = `View Employee #${to.query.view} - Employee CRUD`
+  } else if (to.query.update) {
+    document.title = `Edit Employee #${to.query.update} - Employee CRUD`
+  } else {
+    document.title = 'Employee Management - CRUD'
+  }
+  next()
+})
 
 export default router
